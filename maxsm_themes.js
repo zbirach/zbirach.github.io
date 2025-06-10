@@ -210,7 +210,7 @@
             // На маленьких экранах обрезаем, на больших полностью
             ".card__marker > span {\n max-width: min(12em, 95%);\n}\n" +
             // отметка качества background: rgba(0, 0, 0, 0.6);\n  
-            ".card__quality {\n  position: absolute;\n  left: 0em;\n right: auto;\n  bottom: 0em;\n  padding: 0.2em 0.3em;\n  color: #1c3178;\n font-weight: 700;\n  font-size: 1.0em;\n  -webkit-border-radius: 0 0.5em 0.5em 0;\n  -moz-border-radius: 0.5em 0 0 0.5em;\n  border-radius: 0.5em 0 0 0.5em;\n  text-transform: uppercase;\n}\n" +
+            ".card__quality {\n  position: absolute;\n  left: 0em;\n right: auto;\n  bottom: 0em;\n  padding: 0.2em 0.3em;\n  color: #1c3178;\n font-weight: 700;\n  font-size: 1.0em;\n  -webkit-border-radius: 0 0.5em 0.5em 0;\n  -moz-border-radius: 0 0.5em 0.5em 0;\n  border-radius: 0 0.5em 0.5em 0;\n  text-transform: uppercase;\n}\n" +
             // Уменьшаем расстояние между рядами только для карточках в списках
             ".items-line.items-line--type-cards + .items-line.items-line--type-cards  {\nmargin-top: 1em;\n}\n" +
             // Так же широкие карты фиксим, чтобы не было отскока нижнего ряда, делаем отступ снизу
