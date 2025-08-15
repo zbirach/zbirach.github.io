@@ -114,11 +114,11 @@
             
             if (text.includes('kinozal')) tracker.classList.add('kinozal');
             else if (text.includes('toloka')) tracker.classList.add('toloka');
-            else if (text.includes('toloka')) tracker.classList.add('rutracker');
-            else if (text.includes('bitru')) tracker.classList.add('rutor');
-            else if (text.includes('bitru')) tracker.classList.add('torrentby');
-            else if (text.includes('bitru')) tracker.classList.add('nnmclub');
-            else if (text.includes('bitru')) tracker.classList.add('megapeer');
+            else if (text.includes('rutracker')) tracker.classList.add('rutracker');
+            else if (text.includes('rutor')) tracker.classList.add('rutor');
+            else if (text.includes('torrentby')) tracker.classList.add('torrentby');
+            else if (text.includes('nnmclub')) tracker.classList.add('nnmclub');
+            else if (text.includes('megapeer')) tracker.classList.add('megapeer');
             else if (text.includes('bitru')) tracker.classList.add('bitru');
         });
     }
