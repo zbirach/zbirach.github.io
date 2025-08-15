@@ -25,7 +25,7 @@
             color: '#915ea6',
             'font-weight': 'bold'
         },
-        '.torrent-item__tracker.bitru': {
+        '.torrent-item__tracker.toloka': {
             color: '#915ea6',
             'font-weight': 'bold'
         },
@@ -33,11 +33,7 @@
             color: '#915ea6',
             'font-weight': 'bold'
         }
-        '.torrent-item__tracker.megapeer': {
-            color: '#915ea6',
-            'font-weight': 'bold'
-        }
-        '.torrent-item__tracker.nnmclub': {
+        '.torrent-item__tracker.rutor': {
             color: '#915ea6',
             'font-weight': 'bold'
         }
@@ -45,11 +41,15 @@
             color: '#915ea6',
             'font-weight': 'bold'
         }
-        '.torrent-item__tracker.rutor': {
+        '.torrent-item__tracker.nnmclub': {
             color: '#915ea6',
             'font-weight': 'bold'
         }
-        '.torrent-item__tracker.toloka': {
+        '.torrent-item__tracker.megapeer': {
+            color: '#915ea6',
+            'font-weight': 'bold'
+        }
+        '.torrent-item__tracker.bitru': {
             color: '#915ea6',
             'font-weight': 'bold'
         }
@@ -110,7 +110,7 @@
         // Трекери
         document.querySelectorAll('.torrent-item__tracker').forEach(tracker => {
             const text = tracker.textContent.trim();
-            tracker.classList.remove('kinozal', 'bitru', 'rutracker', 'rutor', 'torrentby', 'nnmclub', 'megapeer', 'toloka');
+            tracker.classList.remove('kinozal', 'toloka', 'rutracker', 'rutor', 'torrentby', 'nnmclub', 'megapeer', 'bitru');
             
             if (text.includes('kinozal')) tracker.classList.add('kinozal');
             else if (text.includes('toloka')) tracker.classList.add('toloka');
