@@ -25,6 +25,10 @@
             color: '#9b59b6',
             'font-weight': 'bold'
         },
+        '.torrent-item__tracker.bitru': {
+            color: '#9b59b6',
+            'font-weight': 'bold'
+        },
         '.torrent-item__tracker.toloka': {
             color: '#2ecc71',
             'font-weight': 'bold'
@@ -86,10 +90,11 @@
         // Трекери
         document.querySelectorAll('.torrent-item__tracker').forEach(tracker => {
             const text = tracker.textContent.trim();
-            tracker.classList.remove('utopia', 'toloka');
+            tracker.classList.remove('utopia', 'bitru', 'toloka');
             
             if (text.includes('UTOPIA (API)')) tracker.classList.add('utopia');
             else if (text.includes('Toloka')) tracker.classList.add('toloka');
+            else if (text.includes('bitru')) tracker.classList.add('bitru');
         });
     }
 
