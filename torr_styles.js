@@ -93,7 +93,7 @@
             tracker.classList.remove('utopia', 'bitru', 'toloka');
             
             if (text.includes('UTOPIA (API)')) tracker.classList.add('utopia');
-            else if (text.includes('Toloka')) tracker.classList.add('toloka');
+            else if (text.includes('toloka')) tracker.classList.add('toloka');
             else if (text.includes('bitru')) tracker.classList.add('bitru');
         });
     }
