@@ -22,15 +22,35 @@
             'font-weight': 'bold'
         },
         '.torrent-item__tracker.kinozal': {
-            color: '#9b59b6',
+            color: '#915ea6',
             'font-weight': 'bold'
         },
         '.torrent-item__tracker.bitru': {
-            color: '#9b59b6',
+            color: '#915ea6',
             'font-weight': 'bold'
         },
+        '.torrent-item__tracker.rutracker': {
+            color: '#915ea6',
+            'font-weight': 'bold'
+        }
+        '.torrent-item__tracker.megapeer': {
+            color: '#915ea6',
+            'font-weight': 'bold'
+        }
+        '.torrent-item__tracker.nnmclub': {
+            color: '#915ea6',
+            'font-weight': 'bold'
+        }
+        '.torrent-item__tracker.torrentby': {
+            color: '#915ea6',
+            'font-weight': 'bold'
+        }
+        '.torrent-item__tracker.rutor': {
+            color: '#915ea6',
+            'font-weight': 'bold'
+        }
         '.torrent-item__tracker.toloka': {
-            color: '#9b59b6',
+            color: '#915ea6',
             'font-weight': 'bold'
         }
     };
@@ -90,10 +110,15 @@
         // Трекери
         document.querySelectorAll('.torrent-item__tracker').forEach(tracker => {
             const text = tracker.textContent.trim();
-            tracker.classList.remove('kinozal', 'bitru', 'toloka');
+            tracker.classList.remove('kinozal', 'bitru', 'rutracker', 'rutor', 'torrentby', 'nnmclub', 'megapeer', 'toloka');
             
             if (text.includes('kinozal')) tracker.classList.add('kinozal');
             else if (text.includes('toloka')) tracker.classList.add('toloka');
+            else if (text.includes('toloka')) tracker.classList.add('rutracker');
+            else if (text.includes('bitru')) tracker.classList.add('rutor');
+            else if (text.includes('bitru')) tracker.classList.add('torrentby');
+            else if (text.includes('bitru')) tracker.classList.add('nnmclub');
+            else if (text.includes('bitru')) tracker.classList.add('megapeer');
             else if (text.includes('bitru')) tracker.classList.add('bitru');
         });
     }
