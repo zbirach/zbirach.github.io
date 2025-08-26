@@ -1,29 +1,42 @@
 (function(){
-    // 🎨 Тут задаємо свої кольори
-    const colors = {
-        menu: "#ff4444",      // колір іконок у головному меню
-        settings: "#44aaff"   // колір іконок у налаштуваннях
-    };
+    'use strict';
 
-    function applyCustomColors(){
-        let style = document.createElement('style');
-        style.innerHTML = `
-        /* Головне меню */
-        .menu__item .menu__ico svg {
-            fill: ${colors.menu} !important;
-        }
-        /* Меню налаштувань */
-        .settings__item .settings__ico svg {
-            fill: ${colors.settings} !important;
-        }
-        `;
-        document.head.appendChild(style);
+    Lampa.Plugin.add({
+        title: 'Color Icons',
+        id: 'color_icons',
+        version: '1.0',
+        description: 'Зміна кольорів іконок головного меню та налаштувань',
+        author: 'GPT'
+    });
+
+    function applyColors(){
+        // Колір іконок головного меню
+        document.querySelectorAll('.menu .menu__item .menu__ico').forEach(el=>{
+            el.style.filter = 'invert(39%) sepia(95%) saturate(5000%) hue-rotate(180deg)'; 
+            // заміни filter на свій колір (наприклад: el.style.color = "#ff0000"; якщо іконки svg)
+        });
+
+        // Колір іконок у меню налаштувань
+        document.querySelectorAll('.settings-container .settings__item .settings__icon').forEach(el=>{
+            el.style.color = '#00ff99'; // салатовий приклад
+        });
+
+        // Колір тексту меню
+        document.querySelectorAll('.menu .menu__item').forEach(el=>{
+            el.style.color = '#ffffff'; 
+        });
+
+        // Колір активного пункту
+        document.querySelectorAll('.menu .menu__item.active').forEach(el=>{
+            el.style.backgroundColor = '#222244'; 
+        });
     }
 
-    // Запускаємо після завантаження додатку
-    Lampa.Listener.follow('app', function (e) {
-        if (e.type === 'ready') {
-            applyCustomColors();
-        }
+    // чекати коли Lampa завантажить DOM
+    document.addEventListener("DOMContentLoaded", applyColors);
+    // ще раз після перемикання розділів
+    Lampa.Listener.follow('app', function(e){
+        if(e.type == 'ready') applyColors();
     });
+
 })();
