@@ -2,7 +2,7 @@
     'use strict';
 
     // 🎨 вибери колір (зелений приклад)
-    const ICON_FILTER = 'invert(56%) sepia(83%) saturate(1524%) hue-rotate(88deg) brightness(106%) contrast(102%)';
+    const ICON_FILTER = 'invert(56%) sepia(83%) saturate(2000%) hue-rotate(88deg) brightness(110%) contrast(105%)';
 
     const css = `
         /* Головне меню */
