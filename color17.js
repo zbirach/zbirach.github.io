@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    let selectedColor = '#ff0000'; // колір за замовчуванням (червоний)
+    let selectedColor = localStorage.getItem('menu_icon_color') || '#ff0000'; // червоний за замовчуванням
+    let styleEl;
 
     const cssTemplate = (color) => `
         /* Головне меню */
@@ -27,8 +28,6 @@
         }
     `;
 
-    let styleEl;
-
     function applyStyles() {
         if (styleEl) styleEl.remove();
         styleEl = document.createElement('style');
@@ -37,30 +36,21 @@
         document.head.appendChild(styleEl);
     }
 
-    // 🔌 Реєстрація плагіна в Lampa
-    Lampa.Plugin.create('menu_icon_color', {
-        title: '🎨 Колір іконок меню',
-        description: 'Змінює колір іконок у головному меню та налаштуваннях',
-        component: {
-            settings: function () {
-                return {
-                    name: 'menu_icon_color',
-                    type: 'color',
-                    label: 'Колір іконок',
-                    value: selectedColor,
-                    onChange: function (value) {
-                        selectedColor = value;
-                        localStorage.setItem('menu_icon_color', value);
-                        applyStyles();
-                    }
-                };
-            }
-        },
-        onCreate: function () {
-            // Відновлення збереженого кольору
-            const saved = localStorage.getItem('menu_icon_color');
-            if (saved) selectedColor = saved;
+    // додаємо пункт у "Плагіни"
+    Lampa.SettingsApi.addComponent({
+        component: 'menu_icon_color',
+        name: 'Колір іконок меню',
+        type: 'color',
+        value: selectedColor,
+        onChange: function (value) {
+            selectedColor = value;
+            localStorage.setItem('menu_icon_color', value);
             applyStyles();
         }
     });
+
+    // застосувати стиль при старті
+    applyStyles();
+
+    console.log('✅ Плагін menu_icon_color запущено');
 })();
