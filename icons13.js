@@ -33,6 +33,25 @@
     .menu .menu__item img {
       filter: invert(40%) sepia(95%) saturate(4000%) hue-rotate(350deg);
     }
+    /* НАЛАШТУВАННЯ */
+    .settings__item .settings__ico,
+    .settings__item .settings__icon,
+    .settings__item .ico,
+    .settings__item .icon {
+    color: #00ccff !important; /* 🔵 заміни на свій */
+    }
+
+    /* svg-іконки */
+    .settings__item svg,
+    .settings__item svg * {
+    fill: #00ccff !important;
+    stroke: #00ccff !important;
+    }
+
+    /* картинки у налаштуваннях */
+    .settings__item img {
+    filter: invert(65%) sepia(95%) saturate(4000%) hue-rotate(180deg);
+    }
 
     /* НАЛАШТУВАННЯ: font-іконки та svg */
     .settings__item .settings__ico, .settings__item .settings__icon {
