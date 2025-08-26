@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    // 🎨 вибери колір (зелений приклад)
-    const ICON_FILTER = 'invert(56%) sepia(83%) saturate(7500%) hue-rotate(88deg) brightness(115%) contrast(110%)';
+    // 🎨 вибери колір (синій приклад)
+    const ICON_FILTER = 'invert(31%) sepia(94%) saturate(3500%) hue-rotate(210deg) brightness(110%) contrast(115%)';
 
     const css = `
         /* Головне меню */
