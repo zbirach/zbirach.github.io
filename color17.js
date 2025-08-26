@@ -1,58 +1,67 @@
 (function () {
     'use strict';
 
-    let selectedColor = Lampa.Storage.get('menu_icon_color', '#ff0000');
-    let styleEl;
+    const PLUGIN_ID = 'menu_icon_color';
+    const PLUGIN_NAME = 'Колір іконок меню';
 
-    const cssTemplate = (color) => `
-        .menu__item svg,
-        .menu__item svg *,
-        .menu__item img,
-        .menu__item .icon,
-        .menu__item .ico,
-        .settings__item svg,
-        .settings__item svg *,
-        .settings__item img,
-        .settings__item .settings__ico,
-        .settings__item .settings__icon,
-        .settings__item .icon,
-        .settings__item .ico {
-            fill: ${color} !important;
-            color: ${color} !important;
-        }
-    `;
+    // значення за замовчуванням
+    let color = Lampa.Storage.get(PLUGIN_ID, '#ff0000');
 
     function applyStyles() {
-        if (styleEl) styleEl.remove();
-        styleEl = document.createElement('style');
-        styleEl.type = 'text/css';
-        styleEl.appendChild(document.createTextNode(cssTemplate(selectedColor)));
-        document.head.appendChild(styleEl);
+        const css = `
+            .menu__item svg,
+            .menu__item svg *,
+            .menu__item img,
+            .menu__item .icon,
+            .menu__item .ico,
+            .settings__item svg,
+            .settings__item svg *,
+            .settings__item img,
+            .settings__item .settings__ico,
+            .settings__item .settings__icon,
+            .settings__item .icon,
+            .settings__item .ico {
+                fill: ${color} !important;
+                color: ${color} !important;
+            }
+        `;
+        let style = document.getElementById(PLUGIN_ID);
+        if (!style) {
+            style = document.createElement('style');
+            style.id = PLUGIN_ID;
+            document.head.appendChild(style);
+        }
+        style.innerHTML = css;
     }
 
-    // ✅ додаємо в налаштування
-    Lampa.Settings.add({
-        id: 'menu_icon_color',
-        name: 'Колір іконок меню',
-        type: 'select',
-        values: {
-            '#ff0000': 'Червоний',
-            '#00ff00': 'Зелений',
-            '#0000ff': 'Синій',
-            '#ffff00': 'Жовтий',
-            '#ffffff': 'Білий'
-        },
-        default: '#ff0000',
-        value: selectedColor,
-        onChange: function (value) {
-            selectedColor = value;
-            Lampa.Storage.set('menu_icon_color', value);
-            applyStyles();
-        },
-        category: 'plugins'
-    });
+    function init() {
+        applyStyles();
 
-    applyStyles();
+        // додаємо в налаштування
+        Lampa.Settings.add({
+            id: PLUGIN_ID,
+            name: PLUGIN_NAME,
+            component: () => {
+                return {
+                    render: () => {
+                        let input = $('<input type="text" placeholder="#ff0000">')
+                            .val(color)
+                            .on('change', function () {
+                                color = $(this).val();
+                                Lampa.Storage.set(PLUGIN_ID, color);
+                                applyStyles();
+                            });
 
-    console.log('✅ Плагін: кольори іконок меню активовано');
+                        return $('<div class="settings-param selector">')
+                            .append('<div class="settings-param__name">Колір (HEX)</div>')
+                            .append(input);
+                    },
+                    update: function(){},
+                    destroy: function(){}
+                };
+            }
+        });
+    }
+
+    Lampa.Plugin.create(PLUGIN_ID, init);
 })();
