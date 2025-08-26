@@ -1,47 +1,75 @@
-(function(){
-    'use strict';
+(function () {
+  'use strict';
 
-    Lampa.Plugin.add({
-        title: 'Color Icons',
-        id: 'color_icons',
-        version: '1.1',
-        description: 'Зміна кольорів усіх іконок у меню та налаштуваннях',
-        author: 'GPT'
-    });
+  // 🎨 Налаштуй свої кольори тут
+  const COLORS = {
+    menu: '#ff4444',       // іконки головного меню
+    settings: '#00ccff',   // іконки в Налаштуваннях
+    activeBg: '#222244',   // фон активного пункту меню (необов'язково)
+  };
 
-    function applyColors(){
-        // Головне меню: font-icon (іконки-шрифт)
-        document.querySelectorAll('.menu .menu__ico, .menu .menu__item .icon').forEach(el=>{
-            el.style.color = '#ff4444'; // червоний
-        });
+  function injectStyles() {
+    if (document.getElementById('color-icons-style')) return;
 
-        // Inline SVG іконки (приклад: anime, releases)
-        document.querySelectorAll('.menu .menu__item svg path').forEach(el=>{
-            el.setAttribute('fill', '#ff4444');
-        });
+    const css = `
+    /* ГОЛОВНЕ МЕНЮ — font-іконки та текст */
+    .menu .menu__ico, .menu .menu__item .icon { color: ${COLORS.menu} !important; }
+    .menu .menu__item { color: inherit; }
 
-        // PNG іконки (деякі елементи меню) — підсвічування через invert
-        document.querySelectorAll('.menu .menu__item img').forEach(el=>{
-            el.style.filter = 'invert(39%) sepia(95%) saturate(5000%) hue-rotate(340deg)'; 
-        });
-
-        // Меню налаштувань
-        document.querySelectorAll('.settings-container .settings__item .settings__icon').forEach(el=>{
-            el.style.color = '#00ccff'; // блакитний
-        });
-
-        // Активні пункти
-        document.querySelectorAll('.menu .menu__item.active').forEach(el=>{
-            el.style.backgroundColor = '#222244'; 
-        });
+    /* ГОЛОВНЕ МЕНЮ — inline SVG (усі вузли всередині) */
+    .menu .menu__item svg, .menu .menu__item svg * {
+      fill: ${COLORS.menu} !important;
+      stroke: ${COLORS.menu} !important;
     }
 
-    // чекати DOM
-    document.addEventListener("DOMContentLoaded", applyColors);
+    /* ГОЛОВНЕ МЕНЮ — PNG (якщо трапляються) */
+    .menu .menu__item img {
+      filter: invert(40%) sepia(95%) saturate(4000%) hue-rotate(350deg);
+    }
 
-    // оновлювати при перемиканні
-    Lampa.Listener.follow('app', function(e){
-        if(e.type == 'ready') applyColors();
-    });
+    /* НАЛАШТУВАННЯ — font-іконки */
+    .settings__item .settings__ico,
+    .settings__item .settings__icon {
+      color: ${COLORS.settings} !important;
+    }
 
+    /* НАЛАШТУВАННЯ — inline SVG */
+    .settings__item svg, .settings__item svg * {
+      fill: ${COLORS.settings} !important;
+      stroke: ${COLORS.settings} !important;
+    }
+
+    /* Активний пункт меню (опціонально) */
+    .menu .menu__item.active, .menu .menu__item.focus {
+      background-color: ${COLORS.activeBg} !important;
+    }
+    `;
+
+    const style = document.createElement('style');
+    style.id = 'color-icons-style';
+    style.textContent = css;
+    document.head.appendChild(style);
+  }
+
+  function start() { injectStyles(); }
+
+  // 1) Запуск коли DOM готовий
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+
+  // 2) Якщо є Lampa.Listener — підпишемось, але без вимоги до Plugin.add
+  const hook = () => {
+    if (window.Lampa && Lampa.Listener && typeof Lampa.Listener.follow === 'function') {
+      Lampa.Listener.follow('app', (e) => {
+        if (e.type === 'ready' || e.type === 'activity' || e.type === 'select') injectStyles();
+      });
+    }
+  };
+  hook();
+
+  // 3) Підстрахуємося на динамічні зміни DOM
+  new MutationObserver(() => injectStyles()).observe(document.documentElement, { childList: true, subtree: true });
 })();
