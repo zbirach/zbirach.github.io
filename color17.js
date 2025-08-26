@@ -36,19 +36,19 @@
         document.head.appendChild(styleEl);
     }
 
-    // додаємо пункт у Налаштування → Плагіни
+    // ✅ правильний варіант з options
     Lampa.SettingsApi.addComponent({
         component: 'menu_icon_color',
         name: 'Колір іконок меню',
         type: 'select',
         category: 'plugins',
-        values: {
-            '#ff0000': 'Червоний',
-            '#00ff00': 'Зелений',
-            '#0000ff': 'Синій',
-            '#ffff00': 'Жовтий',
-            '#ffffff': 'Білий'
-        },
+        options: [
+            {title: 'Червоний', value: '#ff0000'},
+            {title: 'Зелений', value: '#00ff00'},
+            {title: 'Синій', value: '#0000ff'},
+            {title: 'Жовтий', value: '#ffff00'},
+            {title: 'Білий', value: '#ffffff'}
+        ],
         default: '#ff0000',
         value: selectedColor,
         onChange: function (value) {
