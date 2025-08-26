@@ -36,12 +36,19 @@
         document.head.appendChild(styleEl);
     }
 
-    // додаємо пункт у "Плагіни"
+    // додаємо пункт у "Плагіни" з вибором кольору
     Lampa.SettingsApi.addComponent({
         component: 'menu_icon_color',
         name: 'Колір іконок меню',
-        type: 'color',
-        value: selectedColor,
+        type: 'select',
+        values: {
+            '#ff0000': 'Червоний',
+            '#00ff00': 'Зелений',
+            '#0000ff': 'Синій',
+            '#ffff00': 'Жовтий',
+            '#ffffff': 'Білий'
+        },
+        default: selectedColor,
         onChange: function (value) {
             selectedColor = value;
             localStorage.setItem('menu_icon_color', value);
@@ -52,5 +59,5 @@
     // застосувати стиль при старті
     applyStyles();
 
-    console.log('✅ Плагін menu_icon_color запущено');
+    console.log('✅ Плагін menu_icon_color (версія select) запущено');
 })();
