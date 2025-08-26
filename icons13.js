@@ -1,39 +1,28 @@
 (function () {
     'use strict';
 
-    // 🎨 тут вибери свій колір
-    const ICON_COLOR = '#ff4444';
+    // 🎨 вибери колір (червоний приклад)
+    const ICON_FILTER = 'invert(37%) sepia(98%) saturate(7493%) hue-rotate(358deg) brightness(97%) contrast(106%)';
 
     const css = `
-        /* ===== ГОЛОВНЕ МЕНЮ ===== */
-        .menu__item .menu__ico,
-        .menu__item .ico,
-        .menu__item .icon {
-            color: ${ICON_COLOR} !important;
-        }
+        /* Головне меню */
         .menu__item svg,
-        .menu__item svg * {
-            fill: ${ICON_COLOR} !important;
-            stroke: ${ICON_COLOR} !important;
-        }
-        .menu__item img {
-            filter: invert(65%) sepia(95%) saturate(4000%) hue-rotate(330deg);
+        .menu__item svg *,
+        .menu__item img,
+        .menu__item .icon,
+        .menu__item .ico {
+            filter: ${ICON_FILTER} !important;
         }
 
-        /* ===== НАЛАШТУВАННЯ ===== */
+        /* Налаштування */
+        .settings__item svg,
+        .settings__item svg *,
+        .settings__item img,
         .settings__item .settings__ico,
         .settings__item .settings__icon,
-        .settings__item .ico,
-        .settings__item .icon {
-            color: ${ICON_COLOR} !important;
-        }
-        .settings__item svg,
-        .settings__item svg * {
-            fill: ${ICON_COLOR} !important;
-            stroke: ${ICON_COLOR} !important;
-        }
-        .settings__item img {
-            filter: invert(65%) sepia(95%) saturate(4000%) hue-rotate(330deg);
+        .settings__item .icon,
+        .settings__item .ico {
+            filter: ${ICON_FILTER} !important;
         }
     `;
 
@@ -44,8 +33,7 @@
         document.head.appendChild(style);
     }
 
-    // Запуск плагіна
     applyStyles();
 
-    console.log('✅ Плагін для кольору іконок меню та налаштувань підключений');
+    console.log('✅ Плагін: іконки меню та налаштувань перекрашені через filter');
 })();
