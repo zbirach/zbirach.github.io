@@ -261,10 +261,6 @@ var svgCode = encodeURIComponent(`
             "</style>\n";
         Lampa.Template.add('card_css', style);
         $('body').append(Lampa.Template.get('card_css', {}, true));
-        .activity__loader,
-.screensaver__preload {
-    background-size: 25px 25px !important;
-        }
     }
 
     // Функция инициализации плагина
