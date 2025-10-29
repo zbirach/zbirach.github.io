@@ -83,8 +83,8 @@ var svgCode = encodeURIComponent(`
   <path fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round"
         d="M9 1a8 8 0 0 1 0 16a8 8 0 0 0 0-16">
     <animateTransform attributeName="transform"
-      type="rotate" from="0 9 9" to="360 9 9"
-      dur="0.4s" repeatCount="indefinite"/>
+      type="rotate" from="0 11 11" to="360 11 11"
+      dur="0.7s" repeatCount="indefinite"/>
   </path>
 </svg>
 `);
