@@ -77,15 +77,18 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" stroke="${color}" stroke-width="4">
-  <circle cx="25" cy="25" r="20" stroke-opacity="0.3"/>
-  <path d="M45 25a20 20 0 1 1-20-20">
-    <animateTransform attributeName="transform" type="rotate"
-      from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+        // 🔄 Найменший швидкий обертовий півмісяць (ultra-mini crescent)
+var svgCode = encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <path fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round"
+        d="M9 1a8 8 0 0 1 0 16a8 8 0 0 0 0-16">
+    <animateTransform attributeName="transform"
+      type="rotate" from="0 9 9" to="360 9 9"
+      dur="0.25s" repeatCount="indefinite"/>
   </path>
 </svg>
 `);
+
 
 
         
@@ -107,6 +110,21 @@
 
         // Добавляем стиль в head
         $('head').append(style);
+        // Примусовий розмір/позиціонування для фонового лоадера (щоб не масштабувався на великих екранах)
+$('#maxsm_interface_mod_loader_size').remove();
+var sizeStyle = $(
+  '<style id="maxsm_interface_mod_loader_size">' +
+  '.screensaver__preload, .activity__loader {' +
+    'background-size: 28px 28px !important;' +          // розмір лоадера (підкоригуй: 20..40)
+    'background-position: 50% 50% !important;' +
+    'background-repeat: no-repeat !important;' +
+  '}' +
+  // Якщо є великі екранні блоки, іноді потрібно також для елементів в повноекрані:
+  '.screensaver__preload * , .activity__loader * { background-size: 28px 28px !important; }' +
+  '</style>'
+);
+$('head').append(sizeStyle);
+        
 
         if (onetime === false) {
             onetime = true;
