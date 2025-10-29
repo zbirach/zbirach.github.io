@@ -77,17 +77,16 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        // 🔄 Маленький швидкий обертовий півмісяць (mini crescent)
-var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
-  <path fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round"
-        d="M10 1a9 9 0 0 1 0 18a9 9 0 0 0 0-18">
-    <animateTransform attributeName="transform"
-      type="rotate" from="0 10 10" to="360 10 10"
-      dur="0.3s" repeatCount="indefinite"/>
+        var svgCode = encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" stroke="${color}" stroke-width="4">
+  <circle cx="25" cy="25" r="20" stroke-opacity="0.3"/>
+  <path d="M45 25a20 20 0 1 1-20-20">
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
   </path>
 </svg>
 `);
+
 
         
         // Создаем новый стиль
