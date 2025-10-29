@@ -77,16 +77,18 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <path fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round"
-        d="M12 2a10 10 0 0 1 0 20a10 10 0 0 0 0-20">
+        // 🔄 Маленький швидкий обертовий півмісяць (mini crescent)
+var svgCode = encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+  <path fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round"
+        d="M10 1a9 9 0 0 1 0 18a9 9 0 0 0 0-18">
     <animateTransform attributeName="transform"
-      type="rotate" from="0 12 12" to="360 12 12"
-      dur="0.6s" repeatCount="indefinite"/>
+      type="rotate" from="0 10 10" to="360 10 10"
+      dur="0.3s" repeatCount="indefinite"/>
   </path>
 </svg>
 `);
+
         
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
