@@ -80,11 +80,11 @@
         // 🔄 Найменший швидкий обертовий півмісяць (ultra-mini crescent)
 var svgCode = encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-  <path fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round"
-        d="M9 1a8 8 0 0 1 0 16a8 8 0 0 0 0-16">
+  <path fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round"
+        d="M0,-9 A9,9 0 1,1 0,9 A5,5 0 1,0 0,-9 Z">
     <animateTransform attributeName="transform"
-      type="rotate" from="0 11 11" to="360 11 11"
-      dur="0.7s" repeatCount="indefinite"/>
+      type="rotate" from="0" to="360"
+      dur="0.3s" repeatCount="indefinite"/>
   </path>
 </svg>
 `);
