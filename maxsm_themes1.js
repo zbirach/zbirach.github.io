@@ -79,12 +79,12 @@
 
         // 🔄 Найменший швидкий обертовий півмісяць (ultra-mini crescent)
 var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
   <path fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round"
         d="M9 1a8 8 0 0 1 0 16a8 8 0 0 0 0-16">
     <animateTransform attributeName="transform"
       type="rotate" from="0 9 9" to="360 9 9"
-      dur="0.25s" repeatCount="indefinite"/>
+      dur="0.4s" repeatCount="indefinite"/>
   </path>
 </svg>
 `);
@@ -115,7 +115,7 @@ $('#maxsm_interface_mod_loader_size').remove();
 var sizeStyle = $(
   '<style id="maxsm_interface_mod_loader_size">' +
   '.screensaver__preload, .activity__loader {' +
-    'background-size: 28px 28px !important;' +          // розмір лоадера (підкоригуй: 20..40)
+    'background-size: 220px 220px !important;' +          // розмір лоадера (підкоригуй: 20..40)
     'background-position: 50% 50% !important;' +
     'background-repeat: no-repeat !important;' +
   '}' +
