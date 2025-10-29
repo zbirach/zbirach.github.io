@@ -79,7 +79,7 @@
 
         // 🔄 Маленький швидкий обертовий півмісяць (mini crescent)
 var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
   <path fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round"
         d="M10 1a9 9 0 0 1 0 18a9 9 0 0 0 0-18">
     <animateTransform attributeName="transform"
