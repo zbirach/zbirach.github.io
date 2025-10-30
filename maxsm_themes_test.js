@@ -79,7 +79,7 @@
 
         // ⚡⚡⚡ ТВОЙ GITHUB URL ДЛЯ SVG ⚡⚡⚡
         // Заміни цей шлях на свій GitHub URL
-        var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/764.gif";
+        var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/moon.svg";
 
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
