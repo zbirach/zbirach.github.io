@@ -78,24 +78,33 @@
         var color = loaderColors[theme] || loaderColors["default"];
 
         // ⚡⚡⚡ ТВОЙ GITHUB URL ДЛЯ SVG ⚡⚡⚡
-        // Заміни цей шлях на свій GitHub URL
         var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/moons.svg";
 
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
 
-        // Определяем стили для разных тем
-        var themes = {
-            mint_dark: `
+        // Базовые стили лоадера
+        var loaderStyles = `
 .screensaver__preload {
     background: url("${svgUrl}") no-repeat 50% 50% !important;
     background-size: 120px 120px !important;
+    pointer-events: none !important;
 }
 .activity__loader {
     background: url("${svgUrl}") no-repeat 50% 50% !important;
     background-size: 80px 80px !important;
+    display: none !important;
+    pointer-events: none !important;
+}
+.activity--load .activity__loader,
+.activity--preload .activity__loader {
     display: block !important;
 }
+`;
+
+        // Определяем стили для разных тем
+        var themes = {
+            mint_dark: loaderStyles + `
 .navigation-bar__body
 {background: rgba(18, 32, 36, 0.96);
 }
@@ -183,16 +192,7 @@ border: 0.2em solid #3da18d;
 }
 `,
 
-            crystal_cyan: `
-.screensaver__preload {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 120px 120px !important;
-}
-.activity__loader {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 80px 80px !important;
-    display: block !important;
-}
+            crystal_cyan: loaderStyles + `
 .navigation-bar__body
 {background: rgba(10, 25, 40, 0.96);
 }
@@ -280,16 +280,7 @@ border: 0.2em solid #00d2ff;
 }
 `,
 
-            neon_pulse: `
-.screensaver__preload {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 120px 120px !important;
-}
-.activity__loader {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 80px 80px !important;
-    display: block !important;
-}
+            neon_pulse: loaderStyles + `
 .navigation-bar__body
 {background: rgba(10, 25, 40, 0.96);
 }
@@ -377,16 +368,7 @@ border: 0.2em solid #00d2ff;
 }
 `,
 
-            deep_aurora: `
-.screensaver__preload {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 120px 120px !important;
-}
-.activity__loader {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 80px 80px !important;
-    display: block !important;
-}
+            deep_aurora: loaderStyles + `
 .navigation-bar__body
 {background: rgba(18, 34, 59, 0.96);
 }
@@ -474,16 +456,7 @@ border: 0.2em solid #7e7ed9;
 }
 `,
 
-            amber_noir: `
-.screensaver__preload {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 120px 120px !important;
-}
-.activity__loader {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 80px 80px !important;
-    display: block !important;
-}
+            amber_noir: loaderStyles + `
 .navigation-bar__body
 {background: rgba(28, 18, 10, 0.96);
 }
@@ -571,16 +544,7 @@ border: 0.2em solid #f4a261;
 }
 `,
 
-            velvet_sakura: `
-.screensaver__preload {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 120px 120px !important;
-}
-.activity__loader {
-    background: url("${svgUrl}") no-repeat 50% 50% !important;
-    background-size: 80px 80px !important;
-    display: block !important;
-}
+            velvet_sakura: loaderStyles + `
 .navigation-bar__body
 {background: rgba(56, 32, 45, 0.96);
 }
@@ -895,3 +859,4 @@ border: 0.2em solid #f6a5b0;
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
