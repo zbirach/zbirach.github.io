@@ -78,20 +78,15 @@
         var color = loaderColors[theme] || loaderColors["default"];
 
         var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="120" height="120">
-  <rect width="100%" height="100%" fill="${bg}"/>
-  <circle cx="100" cy="100" r="25" fill="${color}">
-    <animate attributeName="r" values="25;30;25" dur="1.2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="1;0.7;1" dur="1.2s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="100" cy="100" r="50" fill="none" stroke="${color}" stroke-width="10" opacity="0.5">
-    <animate attributeName="r" values="50;65;50" dur="1.2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.2s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="100" cy="100" r="80" fill="none" stroke="${color}" stroke-width="8" opacity="0.2">
-    <animate attributeName="r" values="80;95;80" dur="1.2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="1.2s" repeatCount="indefinite"/>
-  </circle>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
+  <rect width="100%" height="100%" fill="currentColor"/>
+  <g fill="#fff">
+    <path d="M256 320a64 64 0 1 1 0-128 64 64 0 0 1 0 128z"/>
+    <path d="M256 400a144 144 0 1 1 0-288 144 144 0 0 1 0 288zm0-40a104 104 0 1 0 0-208 104 104 0 0 0 0 208z"/>
+    <path d="M256 480a224 224 0 1 1 0-448 224 224 0 0 1 0 448zm0-40a184 184 0 1 0 0-368 184 184 0 0 0 0 368z"/>
+  </g>
+  <animateTransform attributeName="transform" attributeType="XML" type="scale"
+    values="1;1.08;1" dur="1.5s" repeatCount="indefinite" additive="sum"/>
 </svg>
 `);
 
@@ -101,8 +96,8 @@ img.style.width = "120px";
 img.style.height = "120px";
 img.style.display = "block";
 img.style.margin = "auto";
-document.body.style.background = bg;
 document.body.appendChild(img);
+
 
         
         // Создаем новый стиль
@@ -345,6 +340,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
