@@ -79,7 +79,7 @@
 
         var svgCode = encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
-  <g fill="currentColor">
+  <g fill="#fff">
     <path d="M256 320a64 64 0 1 1 0-128 64 64 0 0 1 0 128z"/>
     <path d="M256 400a144 144 0 1 1 0-288 144 144 0 0 1 0 288zm0-40a104 104 0 1 0 0-208 104 104 0 0 0 0 208z"/>
     <path d="M256 480a224 224 0 1 1 0-448 224 224 0 0 1 0 448zm0-40a184 184 0 1 0 0-368 184 184 0 0 0 0 368z"/>
@@ -341,6 +341,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
