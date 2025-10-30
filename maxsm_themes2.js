@@ -77,34 +77,37 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        var color = "#fff";         // колір кілець
-var ringThickness = 25;     // товщина ліній (кілець)
-var scaleSpeed = "1.5s";    // швидкість "дихання"
-
-// Радіуси автоматично формуються
-var radii = [70, 150, 230]; // кількість і розміри кілець
-
-var circles = radii.map(r => `
-  <circle cx="256" cy="256" r="${r}" 
-          stroke="${color}" stroke-width="${ringThickness}" 
-          fill="none" />
-`).join("\n");
+        // кольори під тему (світлу/темну)
+var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+var bgColor = isDark ? '#000' : '#fff';
+var loaderColor = isDark ? '#fff' : '#000';
 
 var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
-  ${circles}
-  <animateTransform attributeName="transform" attributeType="XML" type="scale"
-    values="1;1.08;1" dur="${scaleSpeed}" repeatCount="indefinite" additive="sum"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g fill="${loaderColor}">
+    <path d="M50 5
+             A45 45 0 0 1 50 95
+             A25 25 0 0 0 50 5Z">
+      <animateTransform attributeName="transform"
+        type="rotate"
+        from="0 50 50"
+        to="360 50 50"
+        dur="1s"
+        repeatCount="indefinite"/>
+    </path>
+  </g>
 </svg>
 `);
 
 var img = document.createElement('img');
 img.src = 'data:image/svg+xml;utf8,' + svgCode;
-img.style.width = "120px";
-img.style.height = "120px";
 img.style.display = "block";
 img.style.margin = "auto";
+img.style.width = "80px";
+img.style.height = "80px";
+img.style.background = "transparent"; // фон бере тему сторінки
 document.body.appendChild(img);
+
 
 
 
@@ -351,6 +354,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
