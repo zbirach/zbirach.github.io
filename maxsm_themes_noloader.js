@@ -77,17 +77,33 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        // 🔄 Найменший швидкий обертовий півмісяць (ultra-mini crescent)
+        // SVG код лоадера (півмісяць, що обертається)
 var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-  <path fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round"
-        d="M9 1a8 8 0 0 1 0 16a8 8 0 0 0 0-16">
-    <animateTransform attributeName="transform"
-      type="rotate" from="0 9 9" to="360 9 9"
-      dur="0.3s" repeatCount="indefinite"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <path fill="${color}" d="
+    M50 5
+    A45 45 0 0 1 50 95
+    A25 25 0 0 0 50 5Z">
+    <animateTransform attributeName='transform'
+      type='rotate'
+      from='0 50 50'
+      to='360 50 50'
+      dur='1s'
+      repeatCount='indefinite'/>
   </path>
 </svg>
 `);
+
+// створення лоадера
+var img = document.createElement('img');
+img.src = 'data:image/svg+xml;utf8,' + svgCode;
+img.style.width = "80px";
+img.style.height = "80px";
+img.style.display = "block";
+img.style.margin = "auto";
+img.style.background = "transparent"; // прозорий фон
+document.body.appendChild(img);
+
 
 
 
