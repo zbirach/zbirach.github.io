@@ -106,20 +106,7 @@ var encodedSvg = encodeURIComponent(svgCode.replace(/\s+/g, ' ').trim());
 
         // Добавляем стиль в head
         $('head').append(style);
-        // Примусовий розмір/позиціонування для фонового лоадера (щоб не масштабувався на великих екранах)
-$('#maxsm_interface_mod_loader_size').remove();
-var sizeStyle = $(
-  '<style id="maxsm_interface_mod_loader_size">' +
-  '.screensaver__preload, .activity__loader {' +
-    'background-size: 220px 220px !important;' +          // розмір лоадера (підкоригуй: 20..40)
-    'background-position: 50% 50% !important;' +
-    'background-repeat: no-repeat !important;' +
-  '}' +
-  // Якщо є великі екранні блоки, іноді потрібно також для елементів в повноекрані:
-  '.screensaver__preload * , .activity__loader * { background-size: 28px 28px !important; }' +
-  '</style>'
-);
-$('head').append(sizeStyle);
+        
         
 
         if (onetime === false) {
