@@ -77,11 +77,7 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        
-        var color = "#ffffff"; // основний колір
-var bg = "#111111";    // фон
-
-var svgCode = encodeURIComponent(`
+        var svgCode = encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="120" height="120">
   <rect width="100%" height="100%" fill="${bg}"/>
   <circle cx="100" cy="100" r="25" fill="${color}">
@@ -349,5 +345,6 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
