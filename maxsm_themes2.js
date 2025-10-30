@@ -81,7 +81,7 @@
 var innerR = 70;            // внутрішній радіус
 var middleR = 150;          // середній радіус
 var outerR = 230;           // зовнішній радіус
-var ringThickness = 25;     // товщина кільця
+var ringThickness = 30;     // товщина кільця
 var scaleSpeed = "1.3s";    // швидкість "дихання"
 
 var svgCode = encodeURIComponent(`
@@ -367,6 +367,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
