@@ -77,32 +77,37 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        var color = "#FFD700"; // колір світла лампи
+        
+        var color = "#ffffff"; // основний колір
+var bg = "#111111";    // фон
 
 var svgCode = encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">
-  <!-- Скло лампи -->
-  <ellipse cx="60" cy="60" rx="30" ry="50" fill="rgba(255, 255, 150, 0.2)">
-    <animate attributeName="fill" values="rgba(255,255,150,0.2);rgba(255,255,150,0.6);rgba(255,255,150,0.2)" dur="1.5s" repeatCount="indefinite"/>
-    <animate attributeName="ry" values="50;55;50" dur="1.5s" repeatCount="indefinite"/>
-  </ellipse>
-
-  <!-- Нитка лампи -->
-  <rect x="58" y="30" width="4" height="40" fill="${color}" rx="2">
-    <animate attributeName="height" values="40;60;40" dur="1.5s" repeatCount="indefinite"/>
-    <animate attributeName="y" values="30;20;30" dur="1.5s" repeatCount="indefinite"/>
-  </rect>
-
-  <!-- Підстава лампи -->
-  <rect x="50" y="100" width="20" height="10" fill="#555" rx="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="120" height="120">
+  <rect width="100%" height="100%" fill="${bg}"/>
+  <circle cx="100" cy="100" r="25" fill="${color}">
+    <animate attributeName="r" values="25;30;25" dur="1.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.7;1" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="100" cy="100" r="50" fill="none" stroke="${color}" stroke-width="10" opacity="0.5">
+    <animate attributeName="r" values="50;65;50" dur="1.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="${color}" stroke-width="8" opacity="0.2">
+    <animate attributeName="r" values="80;95;80" dur="1.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
 </svg>
 `);
 
-// Приклад вставки в HTML
 var img = document.createElement('img');
 img.src = 'data:image/svg+xml;utf8,' + svgCode;
+img.style.width = "120px";
+img.style.height = "120px";
+img.style.display = "block";
+img.style.margin = "auto";
+document.body.style.background = bg;
 document.body.appendChild(img);
-        
+
         
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
@@ -344,4 +349,5 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
