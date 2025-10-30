@@ -77,15 +77,41 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        var svgCode = encodeURIComponent(`
+        var color = "#fff";         // колір кілець
+var innerR = 70;            // внутрішній радіус
+var middleR = 150;          // середній радіус
+var outerR = 230;           // зовнішній радіус
+var ringThickness = 25;     // товщина кільця
+var scaleSpeed = "1.3s";    // швидкість "дихання"
+
+var svgCode = encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
-  <g fill="#fff">
-    <path d="M256 320a64 64 0 1 1 0-128 64 64 0 0 1 0 128z"/>
-    <path d="M256 400a144 144 0 1 1 0-288 144 144 0 0 1 0 288zm0-40a104 104 0 1 0 0-208 104 104 0 0 0 0 208z"/>
-    <path d="M256 480a224 224 0 1 1 0-448 224 224 0 0 1 0 448zm0-40a184 184 0 1 0 0-368 184 184 0 0 0 0 368z"/>
+  <g fill="${color}">
+    <!-- Внутрішнє коло -->
+    <circle cx="256" cy="256" r="${innerR}" />
+
+    <!-- Середнє кільце -->
+    <path d="
+      M256 ${256 + middleR}
+      a${middleR} ${middleR} 0 1 1 0 -${2 * middleR}
+      a${middleR} ${middleR} 0 1 1 0 ${2 * middleR}z
+      M256 ${256 + (middleR - ringThickness)}
+      a${middleR - ringThickness} ${middleR - ringThickness} 0 1 1 0 -${2 * (middleR - ringThickness)}
+      a${middleR - ringThickness} ${middleR - ringThickness} 0 1 1 0 ${2 * (middleR - ringThickness)}z"/>
+
+    <!-- Зовнішнє кільце -->
+    <path d="
+      M256 ${256 + outerR}
+      a${outerR} ${outerR} 0 1 1 0 -${2 * outerR}
+      a${outerR} ${outerR} 0 1 1 0 ${2 * outerR}z
+      M256 ${256 + (outerR - ringThickness)}
+      a${outerR - ringThickness} ${outerR - ringThickness} 0 1 1 0 -${2 * (outerR - ringThickness)}
+      a${outerR - ringThickness} ${outerR - ringThickness} 0 1 1 0 ${2 * (outerR - ringThickness)}z"/>
   </g>
+
+  <!-- Анімація "дихання" -->
   <animateTransform attributeName="transform" attributeType="XML" type="scale"
-    values="1;1.08;1" dur="1.5s" repeatCount="indefinite" additive="sum"/>
+    values="1;1.08;1" dur="${scaleSpeed}" repeatCount="indefinite" additive="sum"/>
 </svg>
 `);
 
@@ -95,8 +121,8 @@ img.style.width = "120px";
 img.style.height = "120px";
 img.style.display = "block";
 img.style.margin = "auto";
-img.style.color = "var(--theme-color, #fff)"; // бере колір з теми
 document.body.appendChild(img);
+
 
 
 
@@ -341,6 +367,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
