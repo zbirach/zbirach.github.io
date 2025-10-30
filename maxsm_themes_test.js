@@ -78,7 +78,7 @@
         var color = loaderColors[theme] || loaderColors["default"];
 
         // ⚡⚡⚡ ТВОЙ GITHUB URL ДЛЯ SVG ⚡⚡⚡
-        var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/moons.svg";
+        var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/moon.svg";
 
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
