@@ -77,14 +77,14 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        // Автоматичне визначення теми
+        // Автоматичний колір півмісяця під тему
 var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-var loaderColor = isDark ? '#fff' : '#000';
+var color = isDark ? '#fff' : '#000'; // білий у темній темі, чорний у світлій
 
-// SVG півмісяця з анімацією
-var svg = `
+// SVG код лоадера (півмісяць, що обертається)
+var svgCode = encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <path fill="${loaderColor}" d="
+  <path fill="${color}" d="
     M50 5
     A45 45 0 0 1 50 95
     A25 25 0 0 0 50 5Z">
@@ -95,17 +95,19 @@ var svg = `
       dur='1s'
       repeatCount='indefinite'/>
   </path>
-</svg>`;
+</svg>
+`);
 
-// Створюємо елемент <img> з інлайн-SVG
+// створення лоадера
 var img = document.createElement('img');
-img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-img.style.display = 'block';
-img.style.margin = 'auto';
-img.style.width = '80px';
-img.style.height = '80px';
-img.style.background = 'transparent'; // прозорий фон
+img.src = 'data:image/svg+xml;utf8,' + svgCode;
+img.style.width = "80px";
+img.style.height = "80px";
+img.style.display = "block";
+img.style.margin = "auto";
+img.style.background = "transparent"; // прозорий фон
 document.body.appendChild(img);
+
 
 
 
@@ -354,6 +356,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
