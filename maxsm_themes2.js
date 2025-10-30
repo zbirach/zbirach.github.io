@@ -78,38 +78,21 @@
         var color = loaderColors[theme] || loaderColors["default"];
 
         var color = "#fff";         // колір кілець
-var innerR = 70;            // внутрішній радіус
-var middleR = 150;          // середній радіус
-var outerR = 230;           // зовнішній радіус
-var ringThickness = 30;     // товщина кільця
-var scaleSpeed = "1.3s";    // швидкість "дихання"
+var ringThickness = 25;     // товщина ліній (кілець)
+var scaleSpeed = "1.5s";    // швидкість "дихання"
+
+// Радіуси автоматично формуються
+var radii = [70, 150, 230]; // кількість і розміри кілець
+
+var circles = radii.map(r => `
+  <circle cx="256" cy="256" r="${r}" 
+          stroke="${color}" stroke-width="${ringThickness}" 
+          fill="none" />
+`).join("\n");
 
 var svgCode = encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="120" height="120">
-  <g fill="${color}">
-    <!-- Внутрішнє коло -->
-    <circle cx="256" cy="256" r="${innerR}" />
-
-    <!-- Середнє кільце -->
-    <path d="
-      M256 ${256 + middleR}
-      a${middleR} ${middleR} 0 1 1 0 -${2 * middleR}
-      a${middleR} ${middleR} 0 1 1 0 ${2 * middleR}z
-      M256 ${256 + (middleR - ringThickness)}
-      a${middleR - ringThickness} ${middleR - ringThickness} 0 1 1 0 -${2 * (middleR - ringThickness)}
-      a${middleR - ringThickness} ${middleR - ringThickness} 0 1 1 0 ${2 * (middleR - ringThickness)}z"/>
-
-    <!-- Зовнішнє кільце -->
-    <path d="
-      M256 ${256 + outerR}
-      a${outerR} ${outerR} 0 1 1 0 -${2 * outerR}
-      a${outerR} ${outerR} 0 1 1 0 ${2 * outerR}z
-      M256 ${256 + (outerR - ringThickness)}
-      a${outerR - ringThickness} ${outerR - ringThickness} 0 1 1 0 -${2 * (outerR - ringThickness)}
-      a${outerR - ringThickness} ${outerR - ringThickness} 0 1 1 0 ${2 * (outerR - ringThickness)}z"/>
-  </g>
-
-  <!-- Анімація "дихання" -->
+  ${circles}
   <animateTransform attributeName="transform" attributeType="XML" type="scale"
     values="1;1.08;1" dur="${scaleSpeed}" repeatCount="indefinite" additive="sum"/>
 </svg>
@@ -122,6 +105,7 @@ img.style.height = "120px";
 img.style.display = "block";
 img.style.margin = "auto";
 document.body.appendChild(img);
+
 
 
 
@@ -367,6 +351,7 @@ document.body.appendChild(img);
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
