@@ -80,8 +80,8 @@
         // SVG код лоадера (півмісяць, що обертається)
 var svgCode = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <path fill="${color}" d="M50 5 A45 45 0 0 1 50 95 A25 25 0 0 0 50 5Z">
-    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1s" repeatCount="indefinite"/>
+  <path fill="${color}" d="M50 20 A30 30 0 1 1 20 50 A20 20 0 1 0 50 20Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" repeatCount="indefinite"/>
   </path>
 </svg>`;
 
