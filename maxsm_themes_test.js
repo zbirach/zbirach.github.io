@@ -77,20 +77,16 @@
 
         var color = loaderColors[theme] || loaderColors["default"];
 
-        // SVG код лоадера (півмісяць, що обертається)
+        // SVG код лоадера (півмісяць з дуже гострими краями)
 var svgCode = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <path fill="${color}" d="M50 20 A30 30 0 1 1 20 50 A20 20 0 1 0 50 20Z">
-    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" repeatCount="indefinite"/>
+  <path fill="${color}" d="M85 50 A35 35 0 0 1 15 50 A35 35 0 0 1 50 15 L50 85 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="2.2s" repeatCount="indefinite"/>
   </path>
 </svg>`;
 
 // Кодируем SVG для использования в URL
 var encodedSvg = encodeURIComponent(svgCode.replace(/\s+/g, ' ').trim());
-
-
-
-
         
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
