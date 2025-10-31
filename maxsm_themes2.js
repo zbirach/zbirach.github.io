@@ -824,7 +824,7 @@ border: 0.2em solid #f6a5b0;
             //".card--tv .card__type {\n  color: #fff;\n}\n" +
             ".card--tv .card__type,\n.card__type {\n  font-size: 1em;\n  background: transparent;\n color: transparent;\n left: 0;\n  top: 0;\n}\n" + 
               // Воткнуть в нее с переводом
-            ".card__type::after {\n  content: '';\n  position: absolute;\n  left: 0.3em;\n  top: 0.3em;\n width: 2em;\n  height: 2em;\n  background: url('https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/tv_icon.png') no-repeat center center / contain;\n border-radius: 0.4em 0 0.4em 0;\n}" +
+            ".card__type::after {\n  content: '';\n  position: absolute;\n  left: 0.3em;\n  top: 0.3em;\n width: 2em;\n  height: 2em;\n  background: url('https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/tv_icon.png') no-repeat center center / contain;\n filter: drop-shadow(0 0 2px #9eff3a);\n}" +
             // Иконки закладок и т.д.
             ".card__icons {\n  position: absolute;\n  top: 2em;\n  left: 0;\n  right: auto;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n background: rgba(0, 0, 0, 0.6);\n  color: #fff;\n    -webkit-border-radius: 0 0.5em 0.5em 0;\n     -moz-border-radius: 0 0.5em 0.5em 0;\n          border-radius: 0 0.5em 0.5em 0;\n}\n" +
             ".card__icons-inner {\n  background: rgba(0, 0, 0, 0); \n}\n" +
@@ -942,6 +942,7 @@ border: 0.2em solid #f6a5b0;
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
