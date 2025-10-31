@@ -14,7 +14,7 @@
             cs: "Témata"
         },
         maxsm_themes_tvcaption: {
-            ru: "СЕРИАЛ",       
+            ru: "ТВ",       
             en: "TV SERIES",   
             uk: "СЕРІАЛ",    
             be: "СЕРЫЯЛ",     
@@ -375,7 +375,8 @@ border: 0.2em solid #00d2ff;
 }
 .card__quality,
 .card__type::after {
-  background: linear-gradient(to right, #a8ff60, #64ff3d);
+  background: #59a807 !important;
+  color: #000;
 }
 html, body, .extensions {
   background: linear-gradient(135deg, #142d0b, #1b5e20);
@@ -941,4 +942,5 @@ border: 0.2em solid #f6a5b0;
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
