@@ -79,7 +79,7 @@
         var color = loaderColors[theme] || loaderColors["default"];
 
         // ⚡⚡⚡ ТВОЙ GITHUB URL ДЛЯ SVG ⚡⚡⚡
-        var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/moon.svg";
+        var svgUrl = "https://raw.githubusercontent.com/zbirach/zbirach.github.io/main/loader/logo_anim.svg";
 
         // Создаем новый стиль
         var style = $('<style id="maxsm_interface_mod_theme"></style>');
@@ -941,6 +941,7 @@ border: 0.2em solid #f6a5b0;
     // Экспортируем объект плагина для внешнего доступа
     window.maxsm_themes = maxsm_themes;
 })();
+
 
 
 
